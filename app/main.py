@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from routers import company,job 
+from pydantic import BaseModel
+
 
 app = FastAPI()
 app.include_router(company.router)
@@ -16,4 +18,3 @@ def read_about():
 @app.get("/contact")
 def read_about():
     return {"about":" This is about contact "}
-
