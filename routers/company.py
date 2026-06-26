@@ -1,19 +1,28 @@
 from fastapi import APIRouter
-from Schemas.company import CompanyCreate,CompanyUpdate
+from Schemas.company import CompanyCreate, CompanyUpdate
 
-router = APIRouter(prefix="/company",tags=["company"])
-Company = []
+router = APIRouter(prefix="/company", tags=["company"])
+companies = []
 
 @router.post("/")
-def create_company(company:CompanyCreate):
-    company.append(company)
-    return company
+def create_company(company: CompanyCreate):
+    companies.append(company)
+    return companies
 
-@router.get("/{company_id}")
-def get_all_company(company_id: int):
-    return {"company_id":company_id}
+@router.get("/")
+def get_all_company():
+    return companies
 
 @router.get("/{company_id}")
 def get_company(company_id: int):
-    return Company[company_id]
+    return companies[company_id]
 
+@router.put("/{company_id}")
+def update_company(company_id: int, company: CompanyUpdate):
+    companies[company_id] = company
+    return companies
+
+@router.delete("/{company_id}")
+def delete_company(company_id: int,company: CompanyUpdate):
+    companies[company_id] = company
+    return companies
