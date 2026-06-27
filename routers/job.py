@@ -23,6 +23,6 @@ def update_job(job_id: int, job: JobUpdate):
     return jobs
 
 @router.delete("/{job_id}")
-def delete_job(job_id: int, company: JobUpdate):
-    jobs[job_id] = jobs
+def delete_job(job_id: int):
+    jobs.pop(job_id)
     return jobs

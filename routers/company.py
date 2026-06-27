@@ -23,6 +23,6 @@ def update_company(company_id: int, company: CompanyUpdate):
     return companies
 
 @router.delete("/{company_id}")
-def delete_company(company_id: int,company: CompanyUpdate):
-    companies[company_id] = company
+def delete_company(company_id: int):
+    companies.pop(company_id)
     return companies

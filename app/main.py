@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from routers import company,job
-
+from database import Base,engine
 
 app = FastAPI()
+print(engine)
 
 app.include_router(company.router)
 app.include_router(job.router)
@@ -17,5 +18,5 @@ def read_about():
 
 
 @app.get("/contact")
-def read_about():
+def read_contact():
     return {"about": "This is about contact"}
