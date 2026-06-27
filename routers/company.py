@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from Schemas.company import CompanyCreate, CompanyUpdate, CompanyResponse
 from sqlalchemy.orm import Session
-from database import get_db
+
 from models.company import Company
+from database import get_db
 
 router = APIRouter(prefix="/company", tags=["company"])
 
@@ -26,6 +27,7 @@ def get_company(company_id: int, db: Session = Depends(get_db)):
     if (db_company := db.query(Company).filter(Company.id == company_id).first()) is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Company not found")
     return db_company
+
 
 
 @router.put("/{company_id}", response_model=CompanyResponse)
