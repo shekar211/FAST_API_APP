@@ -17,6 +17,7 @@ class JobUpdate(JobBase):
     company_id:Optional[int]=None
 
 class JobResponse(JobBase):
-    id:int
-    class Config:
-        from_attributes = True
+    id: int
+    model_config = {
+        "from_attributes": True
+    }
