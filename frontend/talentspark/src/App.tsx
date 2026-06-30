@@ -37,7 +37,8 @@ function App() {
     <>
     <NavBar />
     <Welcome />
-    <CompanyCard />
+    <br/>
+    <CompanyCard companies={companies} />
     <Footer />
     </>
   );
