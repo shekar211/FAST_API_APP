@@ -18,9 +18,11 @@ if config.config_file_name is not None:
 # add your model's MetaData object here
 # for 'autogenerate' support
 from database import Base
-from models.company import company
-from models.job import job
-target_metadata = None
+from models.company import Company
+from models.job import Job
+from models.user import User
+
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
