@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from Schemas.user import UserCreate, UserResponse
+from Schemas.user import Login_User, UserCreate, UserResponse
 from database import get_db
+from Schemas import token
 from models.user import User
-from Schemas.utils import security
+from utils import security
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -32,7 +33,7 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/login", response_model=UserResponse)
-def login_user(user: UserCreate, db: Session = Depends(get_db)):
+def login_user(user: Login_User, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.email == user.email).first()
     if not existing_user:
         raise HTTPException(status_code=400, detail="User not found")

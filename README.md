@@ -84,3 +84,11 @@ CREATE TABLE Students(
 - declarative_base
     - To create a base class for all the models 
 
+# hashing algorith
+argon2
+bcrypt
+
+python-jose[cryptography]-> used to create jwt tokens
+jwt tokens -> used to authenticate and authorize users
+its in format xxxx.yyyy.zzzzz basically 3 parts
+
